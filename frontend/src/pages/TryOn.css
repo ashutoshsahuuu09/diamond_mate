@@ -1,0 +1,287 @@
+.tryon { padding-bottom: 80px; }
+
+.tryon__header {
+  background: linear-gradient(135deg, var(--charcoal) 0%, #2d3748 100%);
+  padding: calc(var(--nav-height) + 40px) 0 40px;
+  margin-bottom: 48px;
+}
+
+.tryon__title {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: var(--white);
+  margin-bottom: 10px;
+}
+
+.tryon__subtitle {
+  color: rgba(255,255,255,0.65);
+  font-size: 1rem;
+}
+
+.tryon__layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ── Camera Box ──────────────────────────────────────── */
+.tryon__camera-box {
+  aspect-ratio: 4/3;
+  border-radius: 20px;
+  border: 2px solid var(--light-gray);
+  overflow: hidden;
+  background: var(--charcoal-soft);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+}
+
+.tryon__camera-box--active {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.15), var(--shadow-lg);
+}
+
+.tryon__idle, .tryon__requesting, .tryon__denied {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  text-align: center;
+  padding: 40px;
+  color: rgba(255,255,255,0.7);
+}
+
+.tryon__camera-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.4);
+}
+
+.tryon__idle h3, .tryon__denied h3 {
+  color: rgba(255,255,255,0.8);
+  font-size: 1.2rem;
+}
+
+.tryon__idle p, .tryon__denied p {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.875rem;
+  max-width: 300px;
+}
+
+.tryon__denied svg { color: rgba(255,255,255,0.5); }
+
+/* ── Active AR ───────────────────────────────────────── */
+.tryon__active {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.tryon__ring-overlay {
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  opacity: 0.9;
+  animation: ringFloat 2s ease-in-out infinite;
+}
+
+@keyframes ringFloat {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+.tryon__ring-overlay-img {
+  width: 100%;
+  filter: drop-shadow(0 8px 24px rgba(201,168,76,0.6));
+  mix-blend-mode: screen;
+}
+
+.tryon__scan-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  animation: scan 2s ease-in-out infinite;
+}
+
+@keyframes scan {
+  0% { top: 0; opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+.tryon__ar-label {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 5px 12px;
+  background: rgba(201,168,76,0.9);
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 600;
+  border-radius: 100px;
+  letter-spacing: 0.08em;
+}
+
+.tryon__hand-frame {
+  width: 200px;
+  height: 260px;
+  border: 2px dashed rgba(201,168,76,0.4);
+  border-radius: 12px;
+  position: absolute;
+  bottom: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { border-color: rgba(201,168,76,0.4); }
+  50% { border-color: rgba(201,168,76,0.8); }
+}
+
+.tryon__size-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(250,247,242,0.95);
+  border-radius: 10px;
+  padding: 10px 14px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.tryon__size-badge span {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--warm-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.tryon__size-badge strong {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--gold-dark);
+}
+
+.tryon__start-btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+/* ── Sidebar ─────────────────────────────────────────── */
+.tryon__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: calc(var(--nav-height) + 20px);
+}
+
+.tryon__card {
+  background: var(--white);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--light-gray);
+  padding: 28px;
+}
+
+.tryon__card-title {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.tryon__steps {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.tryon__step {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.tryon__step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gold-pale);
+  color: var(--gold-dark);
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tryon__step-text {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  padding-top: 4px;
+}
+
+.tryon__ar-note {
+  background: var(--charcoal);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.tryon__ar-note-icon {
+  color: var(--gold-light);
+  margin-bottom: 12px;
+}
+
+.tryon__ar-note h4 {
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.tryon__ar-note p {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+.tryon__size-card {
+  background: var(--gold-pale);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: var(--card-radius);
+  padding: 28px;
+  text-align: center;
+}
+
+.tryon__size-display {
+  font-family: var(--font-serif);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--gold-dark);
+  line-height: 1;
+  margin: 12px 0;
+}
+
+.tryon__size-card p {
+  font-size: 0.85rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 1024px) {
+  .tryon__layout { grid-template-columns: 1fr; }
+  .tryon__sidebar { position: static; }
+}

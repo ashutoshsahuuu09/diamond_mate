@@ -1,0 +1,208 @@
+.collections-page { padding-bottom: 80px; }
+
+.collections-header {
+  background: var(--ivory-dark);
+  border-bottom: 1px solid var(--light-gray);
+  padding: 48px 0 36px;
+  margin-bottom: 40px;
+  padding-top: calc(var(--nav-height) + 48px);
+}
+
+.collections-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ── Sidebar ─────────────────────────────────────────── */
+.collections-sidebar {
+  background: var(--white);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--light-gray);
+  padding: 28px;
+  position: sticky;
+  top: calc(var(--nav-height) + 20px);
+}
+
+.collections-sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.collections-sidebar__header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.collections-clear-btn {
+  font-size: 0.78rem;
+  color: var(--gold);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+.collections-clear-btn:hover { text-decoration: underline; }
+
+.filter-group {
+  margin-bottom: 28px;
+}
+
+.filter-group__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--warm-gray);
+  margin-bottom: 12px;
+}
+
+.filter-group__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-price {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-price .form-input {
+  flex: 1;
+  padding: 10px 12px;
+  font-size: 0.82rem;
+}
+
+.filter-price span {
+  color: var(--warm-gray);
+}
+
+/* ── Toolbar ─────────────────────────────────────────── */
+.collections-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.collections-search {
+  position: relative;
+  flex: 1;
+}
+
+.collections-search__icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--warm-gray);
+}
+
+.collections-search__input {
+  width: 100%;
+  padding: 11px 40px 11px 42px;
+  border: 1.5px solid var(--light-gray);
+  border-radius: 8px;
+  background: var(--white);
+  font-size: 0.9rem;
+  color: var(--charcoal);
+  transition: border-color var(--duration) var(--ease);
+}
+
+.collections-search__input:focus {
+  border-color: var(--gold);
+  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.12);
+  outline: none;
+}
+
+.collections-search__clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--warm-gray);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+}
+
+.collections-toolbar__right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.collections-sort select {
+  padding: 10px 14px;
+  border: 1.5px solid var(--light-gray);
+  border-radius: 8px;
+  background: var(--white);
+  font-size: 0.85rem;
+  color: var(--charcoal);
+  cursor: pointer;
+  min-width: 180px;
+}
+
+.collections-filter-toggle { display: none; }
+
+/* ── Pills ───────────────────────────────────────────── */
+.collections-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+/* ── Grid ────────────────────────────────────────────── */
+.collections-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ── Empty ───────────────────────────────────────────── */
+.collections-empty {
+  text-align: center;
+  padding: 80px 40px;
+  background: var(--white);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--light-gray);
+}
+
+.collections-empty__icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.collections-empty h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.collections-empty p {
+  color: var(--warm-gray);
+}
+
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .collections-layout { grid-template-columns: 1fr; }
+  .collections-sidebar { display: none; position: static; }
+  .collections-sidebar.open { display: block; }
+  .collections-filter-toggle { display: flex; }
+  .collections-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .collections-grid { grid-template-columns: 1fr; }
+  .collections-toolbar { flex-direction: column; align-items: stretch; }
+  .collections-toolbar__right { justify-content: space-between; }
+}
